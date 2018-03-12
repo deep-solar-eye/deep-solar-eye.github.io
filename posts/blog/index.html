@@ -67,17 +67,13 @@
   </header>
   
   <section id="js-article" class="p-article__body">
-    <p>Deep Learning is becoming one of most important approach for many of the difficult task especially in computer vision. Starting from Imagenet, Deep Convolution Neural Networks (CNNs) have been used to solve many complex problems such as object detection, semantic segmentation and many more. Most of the recent research papers are focused on applications that are related to human, household objects, animals or similar object related task. Despite immense advances, dataset dependency of the solutions limits the generizability of a solution as different application brings their own set of challenges.</p>
-
-<p>In solar farm maintenance, one of the biggest challenge is to detect various types of occlusion type anomalies over the panels, identify them predict their impact of power generation and health of panel and take appropriate measure based on the observations. These occlusion are very common in solar farms due to various reasons, such as soil dust, bird drops, crack, vegetation residues, etc.
-<img src="/img/solar-farm.png" alt="This is an image" />
-Further, the power loss impact analysis of these occlusion are very complicated as they depend on various factors, such as location of occlusion (related to cell and string configuration), occlusion material and thickness, environment (irradiance, temperature), etc. A natural traction towards Deep CNNs is obvious as it has performed well in visual recognition tasks such as image classification, object detection, and segmentation. Yet, application of CNNs in solar farm monitoring still remains a challenge; primarily due to lack of labeled data.</p>
-
-<p>We have developed a novel and first CNNs based solution for solar PV visual analytics that simultaneously detects, localize and classifies the occlusion and predicts the power impact.
+    <p><img src="/img/solar-farm.png" alt="This is an image" />
+The impact of soiling on solar panels is an important and well-studied problem in renewable energy sector. In this project, we present the first convolutional neural network (CNN) based approach for solar panel soiling and defect analysis. Our approach takes an RGB image of solar panel and environmental factors as inputs to predict power loss, soiling localization, and soiling type. In computer vision, localization is a complex task which typically requires manually labeled training data such as bounding boxes or segmentation masks. Our proposed approach consists of specialized four stages which completely avoids localization ground truth and only needs panel images with power loss labels for training.
 <img src="/img/panelImage_PV.png" alt="This too is an image" />
-A Deep CNN network is designed specific to the panel occlusion detection task which is similar to ResNet with additional convolutional BiDIAF (BiDirectional input aware fusion) unit for precise localization. To overcome the biggest challange of lack of labelled solar panel data, we took the pathway of weakly supervised approach. In particular, we adopt a four stage approach. First, we use a CNN, so called ImpactNet to predict the power loss while generating important image features at intermediate layers. From these intermediate layers, we create a candidate mask using a pyrmid based network with up convolution. We then use our end to end DeepSolarEye CNN to train in a multitask manner to predict the localization mask. Our DeepSolarEye yields a highly improved mask helped by multitask and the customized network that pin points the occlusion. In the last phase, we predict the occlusion material using a webly trained classifier. Webly trained classifier enables to classify the occlusion material out of training data.</p>
+<br>
+ The region of impact area obtained from the predicted localization masks are classified into soiling types using the webly supervised learning. For improving localization capabilities of CNNs, we introduce a novel bi-directional input-aware fusion (BiDIAF) block that reinforces the input at different levels of CNN to learn input-specific feature maps. Our empirical study shows that BiDIAF improves the power loss prediction accuracy by about 3% and localization accuracy by about 4%. Our end-to-end model yields further improvement of about 24% on localization when learned in a weakly supervised manner. Our approach is generalizable and showed promising results on web crawled solar panel images. Our system has a frame rate of 22 fps (including all steps) on a NVIDIA TitanX GPU. Additionally, we collected first of it’s kind dataset for solar panel image analysis consisting 45,000+ images.</p>
 
-<p>DeepSolarEye combines a unique amalgamation of deep leaning techniques with solar PV physics resulting in a precisely localized occlusion detection and out of the box type classification while accurately predicting the power impact. I encourage reader for more details to refer <a href="https://arxiv.org/abs/1710.03811">https://arxiv.org/abs/1710.03811</a>. Some of the examples shown in Figure depicts the capability of DeepSolarEye.</p>
+<p>For more details check the <a href="https://arxiv.org/abs/1710.03811">paper</a> published at WACV 2018 on the same.</p>
 
   </section>
   <footer>
@@ -86,6 +82,7 @@ A Deep CNN network is designed specific to the panel occlusion detection task wh
       <div class="c-pagination__ctrl">
         <div class="c-pagination__newer">
           
+          <a href="/posts/dataset/">Newer</a>
           
         </div>
         <div class="c-pagination__older">
@@ -103,6 +100,18 @@ A Deep CNN network is designed specific to the panel occlusion detection task wh
 </article>
   </main>
   
+<nav class="l-nav p-menu">
+  <ul class="p-menu__lists">
+    
+      
+      <li class="p-menu__listitem">
+        <a href="/about">About</a>
+      </li>
+      
+    
+  </ul>
+</nav>
+
 
   <footer class="l-footer">
     
